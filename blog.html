@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quick Guide</title>
+
+    <!-- =========================
+         CSS
+    ========================== -->
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* NAVBAR */
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 18px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #dbeafe;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 90px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 650px;
+            margin: auto;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            background: white;
+            color: #2563eb;
+            border: none;
+
+            padding: 14px 25px;
+            border-radius: 6px;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background: #dbeafe;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* SEARCH */
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .search-box input {
+            width: 100%;
+            max-width: 500px;
+
+            padding: 14px 18px;
+
+            border: 1px solid #ddd;
+            border-radius: 6px;
+
+            font-size: 16px;
+        }
+
+        /* GUIDES */
+
+        .guides {
+            display: grid;
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .guide-card {
+            background: white;
+            padding: 25px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .guide-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .guide-card h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .guide-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .read-btn {
+            background: #2563eb;
+            color: white;
+
+            border: none;
+
+            padding: 10px 18px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+        }
+
+        .read-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #111827;
+            color: white;
+
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+        .about h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            max-width: 650px;
+            margin: auto;
+            color: #cbd5e1;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .contact h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .contact a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: #9ca3af;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        /* DARK MODE */
+
+        body.dark {
+            background: #0f172a;
+            color: white;
+        }
+
+        body.dark .guide-card {
+            background: #1e293b;
+        }
+
+        body.dark .guide-card p,
+        body.dark .section-title p {
+            color: #cbd5e1;
+        }
+
+        body.dark .search-box input {
+            background: #1e293b;
+            color: white;
+            border-color: #475569;
+        }
+
+        /* MODAL */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0,0,0,0.7);
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            z-index: 200;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            color: #222;
+
+            max-width: 600px;
+            width: 100%;
+
+            padding: 35px;
+
+            border-radius: 10px;
+
+            position: relative;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            line-height: 1.7;
+        }
+
+        .close {
+            position: absolute;
+
+            right: 20px;
+            top: 15px;
+
+            border: none;
+            background: none;
+
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 800px) {
+
+            .guides {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+            Quick Guide
+        </div>
+
+        <nav>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#guides">
+                Guides
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <h1>
+            Quick Guide
+        </h1>
+
+        <p>
+            Simple guides that help you learn,
+            understand and get things done faster.
+        </p>
+
+        <button onclick="toggleDarkMode()">
+            🌙 Dark Mode
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         GUIDES
+    ========================== -->
+
+    <section class="container" id="guides">
+
+        <div class="section-title">
+
+            <h2>
+                Latest Guides
+            </h2>
+
+            <p>
+                Find useful guides for everyday learning.
+            </p>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search guides..."
+            >
+
+        </div>
+
+
+        <div class="guides" id="guideList">
+
+
+            <!-- GUIDE 1 -->
+
+            <div class="guide-card">
+
+                <div class="guide-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Learn HTML
+                </h3>
+
+                <p>
+                    Learn the basics of HTML and
+                    create your first webpage.
+                </p>
+
+                <button
+                    class="read-btn"
+                    onclick="openGuide('Learn HTML',
+                    'HTML is the basic structure of a webpage. Start by learning headings, paragraphs, links, images, buttons and forms.')"
+                >
+                    Read Guide
+                </button>
+
+            </div>
+
+
+            <!-- GUIDE 2 -->
+
+            <div class="guide-card">
+
+                <div class="guide-icon">
+                    🎨
+                </div>
+
+                <h3>
+                    Learn CSS
+                </h3>
+
+                <p>
+                    Learn how to style websites
+                    and make them look beautiful.
+                </p>
+
+                <button
+                    class="read-btn"
+                    onclick="openGuide('Learn CSS',
+                    'CSS is used to design webpages. You can change colors, fonts, spacing, layouts, animations and responsive designs.')"
+                >
+                    Read Guide
+                </button>
+
+            </div>
+
+
+            <!-- GUIDE 3 -->
+
+            <div class="guide-card">
+
+                <div class="guide-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Learn JavaScript
+                </h3>
+
+                <p>
+                    Make your websites interactive
+                    using JavaScript.
+                </p>
+
+                <button
+                    class="read-btn"
+                    onclick="openGuide('Learn JavaScript',
+                    'JavaScript adds functionality to websites. You can use it for buttons, forms, animations, calculations and dynamic content.')"
+                >
+                    Read Guide
+                </button>
+
+            </div>
+
+
+            <!-- GUIDE 4 -->
+
+            <div class="guide-card">
+
+                <div class="guide-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Responsive Design
+                </h3>
+
+                <p>
+                    Learn how to make websites work
+                    on phones, tablets and computers.
+                </p>
+
+                <button
+                    class="read-btn"
+                    onclick="openGuide('Responsive Design',
+                    'Responsive design allows a website to adapt to different screen sizes. CSS media queries and flexible layouts are commonly used.')"
+                >
+                    Read Guide
+                </button>
+
+            </div>
+
+
+            <!-- GUIDE 5 -->
+
+            <div class="guide-card">
+
+                <div class="guide-icon">
+                    🔐
+                </div>
+
+                <h3>
+                    Internet Safety
+                </h3>
+
+                <p>
+                    Learn simple ways to stay safe
+                    while using the internet.
+                </p>
+
+                <button
+                    class="read-btn"
+                    onclick="openGuide('Internet Safety',
+                    'Use strong unique passwords, enable two-factor authentication, avoid suspicious links and never share sensitive information with unknown people.')"
+                >
+                    Read Guide
+                </button>
+
+            </div>
+
+
+            <!-- GUIDE 6 -->
+
+            <div class="guide-card">
+
+                <div class="guide-icon">
+                    🚀
+                </div>
+
+                <h3>
+                    Start Programming
+                </h3>
+
+                <p>
+                    Discover the basic concepts
+                    behind computer programming.
+                </p>
+
+                <button
+                    class="read-btn"
+                    onclick="openGuide('Start Programming',
+                    'Programming involves giving computers instructions. Start with variables, conditions, loops, functions and simple projects.')"
+                >
+                    Read Guide
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section class="about" id="about">
+
+        <h2>
+            About Quick Guide
+        </h2>
+
+        <p>
+            Quick Guide is a simple website where you can
+            find easy-to-understand guides about technology,
+            programming, websites and everyday topics.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section class="contact" id="contact">
+
+        <h2>
+            Contact Us
+        </h2>
+
+        <p>
+            Have a question?
+        </p>
+
+        <br>
+
+        <a href="mailto:hello@example.com">
+            hello@example.com
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Quick Guide | All Rights Reserved
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         MODAL
+    ========================== -->
+
+    <div class="modal" id="guideModal">
+
+        <div class="modal-content">
+
+            <button
+                class="close"
+                onclick="closeGuide()"
+            >
+                ×
+            </button>
+
+            <h2 id="modalTitle">
+                Guide
+            </h2>
+
+            <p id="modalText">
+                Guide content
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /*
+        =====================================
+        DARK MODE
+        =====================================
+        */
+
+        function toggleDarkMode() {
+
+            document.body.classList.toggle("dark");
+
+        }
+
+
+        /*
+        =====================================
+        OPEN GUIDE
+        =====================================
+        */
+
+        function openGuide(title, text) {
+
+            document.getElementById(
+                "modalTitle"
+            ).textContent = title;
+
+            document.getElementById(
+                "modalText"
+            ).textContent = text;
+
+            document.getElementById(
+                "guideModal"
+            ).classList.add("show");
+
+        }
+
+
+        /*
+        =====================================
+        CLOSE GUIDE
+        =====================================
+        */
+
+        function closeGuide() {
+
+            document.getElementById(
+                "guideModal"
+            ).classList.remove("show");
+
+        }
+
+
+        /*
+        =====================================
+        SEARCH GUIDES
+        =====================================
+        */
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+        const guideCards =
+            document.querySelectorAll(
+                ".guide-card"
+            );
+
+
+        searchInput.addEventListener(
+            "input",
+            function() {
+
+                const search =
+                    this.value.toLowerCase();
+
+
+                guideCards.forEach(
+                    function(card) {
+
+                        const text =
+                            card.textContent
+                                .toLowerCase();
+
+
+                        if (
+                            text.includes(search)
+                        ) {
+
+                            card.style.display =
+                                "block";
+
+                        } else {
+
+                            card.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /*
+        =====================================
+        CLOSE MODAL WHEN CLICKING OUTSIDE
+        =====================================
+        */
+
+        document.getElementById(
+            "guideModal"
+        ).addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === this
+                ) {
+
+                    closeGuide();
+
+                }
+
+            }
+        );
+
+
+        /*
+        =====================================
+        ESCAPE KEY
+        =====================================
+        */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeGuide();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
